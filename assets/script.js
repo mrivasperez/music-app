@@ -13,7 +13,7 @@ const title = document.getElementById('title');
 const cover = document.getElementById('cover');
 
 // Array of song titles
-const songs = ['creativeminds', 'goinghigher', 'tomorrow'];
+const songs = ['creative-minds', 'going-higher', 'tomorrow'];
 // Keep track of song
 let songIndex = 2;
 //Initially load song details into DOM
@@ -21,7 +21,7 @@ loadSong(songs[songIndex]);
 
 // Update song details
 function loadSong(song){
-    title.innerText = song;
+    title.innerHTML = `Currently playing: <strong>${song.charAt(0).toUpperCase() + song.slice(1)}</strong>`;
     audio.src = `assets/sounds/${song}.mp3`;
     cover.src = `assets/images/${song}.jpg`;
 }
@@ -64,10 +64,21 @@ function nextSong() {
     playSong();
 }
 
-function updateProgress() {
-    
-
+// update progress bar
+function updateProgress(e) {
+    const {duration, currentTime} = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width =`${progressPercent}%`;
 }
+
+// Set progress bar
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+  
+    audio.currentTime = (clickX / width) * duration;
+  }
 
 // EVENT LISTENERS
 
@@ -86,4 +97,10 @@ prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
 // Progress bar updates
-audio.addEventListener('timeupdate', updateProgress)
+audio.addEventListener('timeupdate', updateProgress);
+
+// Click on progress bar
+progressContainer.addEventListener('click', setProgress);
+
+// Next song when songs ends
+audio.addEventListener('ended', nextSong);
