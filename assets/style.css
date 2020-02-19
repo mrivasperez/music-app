@@ -37,12 +37,50 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    animation: rotate 3s linear infinite;
+    animation: rotate 5s linear infinite;
     animation-play-state: paused;
-    
+
 }
+
+.music-container.play .img-container img {
+    animation-play-state: running;
+} 
 
 .music-info {
 
 }
 
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: white;
+    border: 0;
+    color: rgba(0, 0, 139, 0.2);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+.action-btn.action-btn-big {
+    color: rgba(0, 0, 139, 0.6);
+    font-size: 40px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
