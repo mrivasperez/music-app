@@ -64,6 +64,11 @@ function nextSong() {
     playSong();
 }
 
+function updateProgress() {
+    
+
+}
+
 // EVENT LISTENERS
 
 playBtn.addEventListener('click', () => {
@@ -79,3 +84,6 @@ playBtn.addEventListener('click', () => {
 // Change song
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+
+// Progress bar updates
+audio.addEventListener('timeupdate', updateProgress)

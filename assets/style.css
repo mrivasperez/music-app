@@ -40,20 +40,6 @@ h1 {
     height: 125px;
     width: 125px;
     border-radius: 50%;
-    -webkit-box-shadow: 0 12px 12px 0px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 12px 12px 0px rgba(0, 0, 0, 0.6);
-         box-shadow: 0 12px 12px 0px rgba(0, 0, 0, 0.6);
-}
-
-.img-container::after {
-    content: '';
-    border-radius: 50%;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    height: 30px;
-    width: 30px;
-    transform: translate(-50%, 68%);
 }
 
 .img-container img {
@@ -68,15 +54,24 @@ h1 {
     width: 125px;
 	height: 125px;
 	box-sizing: border-box;
-    border-radius: 50%
-
-}
-
-.music-container.play .img-container img {
-    animation: rotate 6s linear infinite;
+    border-radius: 50%;
+    animation: rotate 3s linear infinite;
     animation-play-state: paused;
+  }
 
-} 
+  .img-container-shadow {
+    position: absolute;
+    height: 125px;
+    width: 125px;
+    box-shadow: inset 3px 3px 10px 0 #000000;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+}
+  
+  .music-container.play .img-container img {
+    animation-play-state: running;
+  }
 
 @keyframes rotate {
     from {
