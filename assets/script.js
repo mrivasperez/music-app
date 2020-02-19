@@ -15,7 +15,7 @@ const cover = document.getElementById('cover');
 // Array of song titles
 const songs = ['creativeminds', 'goinghigher', 'tomorrow'];
 // Keep track of song
-let songIndex = 1;
+let songIndex = 2;
 //Initially load song details into DOM
 loadSong(songs[songIndex]);
 
@@ -25,3 +25,30 @@ function loadSong(song){
     audio.src = `assets/sounds/${song}.mp3`;
     cover.src = `assets/images/${song}.jpg`;
 }
+
+// Play song
+function playSong() {
+    musicContainer.classList.add('play');
+    playBtn.querySelector('i.fas').classList.remove('fa-play');
+    playBtn.querySelector('i.fas').classList.add('fa-pause');
+    audio.play();
+}
+
+function pauseSong() {
+    musicContainer.classList.remove('play');
+    playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    playBtn.querySelector('i.fas').classList.add('fa-play');
+    audio.pause();
+}
+
+// EVENT LISTENERS
+
+playBtn.addEventListener('click', () => {
+    //Check to see if song is playing or not.
+    const isPlaying = musicContainer.classList.contains('play');
+    if(isPlaying){
+        pauseSong();
+    } else {
+        playSong();
+    }
+})
